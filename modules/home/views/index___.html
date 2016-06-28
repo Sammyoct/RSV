@@ -1,9 +1,15 @@
-﻿<link href="http://localhost/rsv/modules/home/css/bootstrap.css" rel="stylesheet">
-<link href="http://localhost/rsv/modules/home/css/dashboard.css" rel="stylesheet">
-<link href="http://localhost/rsv/modules/home/css/font-awesome.css" rel="stylesheet">
-<!-- script src="http://localhost/rsv/modules/home/js/firstPhaseController.js"></script -->
-<script src="http://localhost/rsv/modules/home/js/bootstrap.min.js"></script>
-<script src="http://localhost/rsv/modules/home/js/jquery.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Pavilion Data</title>
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/pavilionListingController.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 <style>
    th, td {
     padding: 5px;
@@ -30,7 +36,9 @@ if (e.style.display == 'block' || e.style.display=='')
    }
 }	
 </script>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+  </head>
+  <body  ng-app = "devices"  ng-controller="DeviceController">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -39,13 +47,13 @@ if (e.style.display == 'block' || e.style.display=='')
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-         <a class="navbar-brand" href="#"><img src="http://localhost/rsv/modules/home/images/logo.png" alt="" width="128px" height="34px"></a>
+         <a class="navbar-brand" href="#"><img src="./images/logo.png" alt="Pavilion" width="128px" height="34px"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
 			<li>	
 			<i class="fa fa-user ui-left ui-user-icon" ></i>
-			<a href="#/login" class="ui-left">Log Out</a>
+			<a href="#" class="ui-left">Log Out</a>
 			</li>
           </ul>
           <form class="navbar-form navbar-right">
@@ -313,7 +321,9 @@ if (e.style.display == 'block' || e.style.display=='')
 	</div>
         <div ng-show="!showIconData" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="wrapper col-md-12">
-				<img class="img-responsive" src="http://localhost/rsv/modules/home/images/under-construction.jpg">
+				<img class="img-responsive" src="./images/under-construction.jpg">
 			</div>
 		</div>	
 	</div>		
+  </body>
+</html>

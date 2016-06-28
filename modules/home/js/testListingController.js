@@ -1,9 +1,7 @@
-﻿'use strict';
-
-var app = angular.module('Home')
-
-app.controller('HomeController',['$scope,$location',function ($scope,$location) {
-var hostName = $location.host();
+var app = angular.module('devices',[])
+app.controller('DeviceController',function($scope,$location){
+    
+    var hostName = $location.host();
 	
 	var port = $location.port();
 
@@ -21,9 +19,9 @@ var hostName = $location.host();
     };
    
    if(port != ''){
-	var defaultUrl = "https://"+hostName+":"+port+"/RestHandler.py";
+	var defaultUrl = "https://"+hostName+":"+port+"/cgi-bin/Pavilion/RestHandler.py";
    }else{
-	var defaultUrl = "https://"+hostName+"/RestHandler.py";
+	var defaultUrl = "https://"+hostName+"/cgi-bin/Pavilion/RestHandler.py";
    }
 
    $scope.responseControllerData = $scope.ajaxCall(defaultUrl+"?ControllersDetails");
@@ -123,4 +121,4 @@ var hostName = $location.host();
 	
     $scope.showIconData = true; 
  
-}]);
+});
