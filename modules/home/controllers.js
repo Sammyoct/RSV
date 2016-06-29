@@ -2,10 +2,7 @@
 
 var app = angular.module('Home')
 
-app.controller('HomeController',['$scope,$location',function ($scope,$location) {
-var hostName = $location.host();
-	
-	var port = $location.port();
+app.controller('HomeController',['$scope',function ($scope) {
 
     $scope.ajaxCall = function(url) {
        var response = $.ajax({
@@ -20,12 +17,8 @@ var hostName = $location.host();
         return response.responseJSON;
     };
    
-   if(port != ''){
-	var defaultUrl = "https://"+hostName+":"+port+"/RestHandler.py";
-   }else{
-	var defaultUrl = "https://"+hostName+"/RestHandler.py";
-   }
-
+   var defaultUrl = "https://localhost/RestHandler.py";
+   
    $scope.responseControllerData = $scope.ajaxCall(defaultUrl+"?ControllersDetails");
    
    if($scope.responseControllerData != undefined){
