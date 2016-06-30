@@ -78,237 +78,64 @@ if (e.style.display == 'block' || e.style.display=='')
 			  </ul>  
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-show="showIconData">
-				<h1 class="page-header"></h1>
+				<h1 class="page-header">Security Gate Pass</h1>
 				<div class="col-md-12">	
-					<div class="bs-example">	
-						<ul class="nav nav-tabs" id="myTab">
-							<li class="active"><a data-toggle="tab" href="javascript:void(0)" ng-click="tabClick('controller')">Controller</a></li>
-							<li><a data-toggle="tab" href="javascript:void(0)" ng-click="tabClick('disk')">Disk</a></li>
-							<li><a data-toggle="tab" href="javascript:void(0)" ng-click="tabClick('volume')">Volumes</a></li>
-							<li><a data-toggle="tab" href="javascript:void(0)" ng-click="tabClick('host')">Hosts</a></li> 
-						</ul>		
-					</div>
-					 <div class="tab-content" id="myTabContent">
-						<div id="controller" class="tab-pane fade in active">
-                            <div class="table-height-250x">
-                                  <table class="table hover-table">
-                                  <thead>
-                                    <tr>
-                                      <th>Name</th>
-                                      <th>Version</th>
-                                      <th>Uptime</th>
-                                      <th>IP</th>
-                                      <th>Serial</th>
-									  <th>Status</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody ng-show="controllerData.length">
-                                    <tr ng-repeat="cd in controllerData" ng-click="showData(cd,'controller')" ng-class="{'selected':cd.id==selectedControllerData.id}">
-                                      <td>{{cd.id}}</td>
-                                      <td>{{cd.version}}</td>
-                                      <td>{{cd.uptime}}</td>
-                                      <td>{{cd.ip}}</td>
-                                      <td>{{cd.serial}}</td>
-                  					  <td>{{cd.status}}</td>
-                                    </tr>
-                                  </tbody>
-                                  <tbody ng-show="!controllerData.length">
-                                    <tr>
-                                      <td colspan="5"><center>No Data Found</center></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+						<div id="controller" class="tab-pane fade in active" style="text-align:justify">
+                            <div class="">
+								<div>
+								 <label>Purchase order no</label>
+								 <input type="text" name="pono" ng-model="pono">
+								</div>
+								<div>
+									<input type="button" ng-click="searchPO()" value="Search">
+								</div>
                             </div>
                         </div>
-						<div id="Disk" class="tab-pane fade">
-                            <div class="table-height-250x">
-                                <table class="table hover-table">
-                                  <thead>
-                                    <tr>
-									  <th>Name</th>
-                                      <th>Serial</th>
-                                      <th>Manufacturer</th>
-                                      <th>Model</th>
-                                      <th>Status</th>
-                                      <th>Size</th>
-                                      <th>Used</th>
-									  <th>Available</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody ng-show="disksData.length">
-                                    <tr ng-repeat="dd in disksData" ng-click="showData(dd,'disk')" ng-class="{'selected':dd.id==selectedDiskData.id}">
-                                      <td>{{dd.id}}</td>
-									  <td>{{dd.serial}}</td>
-                                      <td>{{dd.manufacturer}}</td>
-                                      <td>{{dd.model}}</td>
-                                      <td>{{dd.status}}</td>
-                                      <td>{{dd.size}}GB</td>
-                                      <td>{{dd.used}}GB</td>
-									  <td>{{dd.available}}GB</td>
-                                    </tr>
-                                  </tbody>
-                                  <tbody ng-show="!disksData.length">
-                                    <tr>
-                                      <td colspan="7"><center>No Data Found</center></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                            </div>
-                        </div>
-						<div id="Volume" class="tab-pane fade">
-                                <div class="table-height-250x">
-                                <table class="table hover-table">
-                                  <thead>
-                                    <tr>
-                                      <th>Name</th>
-                                      <th>Status</th>
-                                      <th>Block Size</th>
-                                      <th>Size</th>
-                                      <th>MinIOPS</th>
-                                      <th>Protocol</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody ng-show="volumesData.length">
-                                    <tr ng-repeat="vd in volumesData" ng-click="showData(vd,'volume')"  ng-class="{'selected':vd.id==selectedVolumeData.id}">
-                                      <td>{{vd.id}}</td>
-                                      <td>{{vd.status}}</td>
-                                      <td>{{vd.blocksize}}GB</td>
-                                      <td>{{vd.size}}GB</td>
-                                      <td>{{vd.minIOPS}}</td>
-                                      <td>{{vd.protocol}}</td>
-                                    </tr>
-                                  </tbody>
-                                  <tbody ng-show="!volumesData.length">
-                                    <tr>
-                                      <td colspan="6"><center>No Data Found</center></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                               </div>
-					       </div>				
-					<div id="Hosts" class="tab-pane fade">
-                        <div class="table-height-250x">
-                            <table class="table hover-table">
-							  <thead>
-								<tr>
-								  <th>Name</th>
-                                  <th>Status</th>
-								</tr>
-							  </thead>
-							  <tbody ng-show="hostsData.length">
-								<tr ng-repeat="hd in hostsData" ng-click="showData(hd,'host')"  ng-class="{'selected' :hd.id==selectedHostData.id}">
-								  <td>{{hd.id}}</td>
-                                  <td>{{hd.status}}</td>
-								</tr>
-                              </tbody>
-                              <tbody ng-show="!hostsData.length">
-                                    <tr>
-                                      <td colspan="2"><center>No Data Found</center></td>
-                                    </tr>
-                                  </tbody>
-							</table>
-                        </div>
-                    </div>
+					<br>
                     <br>
-                    <br>
-                    <div ng-show="showControllerData">
+                    <div ng-show="showPOData">
                         <div class="bs-example">	
                             <ul class="nav nav-tabs">
-                                <li class="active"><a><span class="ui-captilize"><strong>{{selectedControllerDevice}}</strong></span>&nbsp;:&nbsp;{{selectedControllerData.id}}</a></li>
+                                <li class="active"><a><span><strong>PO NO. : {{displayValue}}</strong></span></a></li>
                             </ul>		
                         </div>
                          <div class="tab-content">
                             <div class="tab-pane fade in active table-height-240x">
                                  <table class="table hover-table">
-                                   <tr>
-                                      <td><strong>Temp</strong>&nbsp;:&nbsp;</td>
-                                      <td>{{selectedControllerData.temp}}°C</td>
-                                   </tr>
-                                   <tr>
-                                    <td><strong>UUID:</strong>&nbsp;:&nbsp;</td>
-                                    <td>{{selectedControllerData.uuid}}</td> 
-                                   </tr>
-                                </table>
-                              </div>
-                            </div >		
-                     </div>         
-                     <div ng-show="showDiskData">
-                        <div class="bs-example">	
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a><span class="ui-captilize"><strong>{{selectedDiskDevice}}</strong></span>&nbsp;:&nbsp;{{selectedDiskData.id}}</a></li>
-                            </ul>		
-                        </div>
-                         <div class="tab-content">
-                            <div class="tab-pane fade in active table-height-240x">
-                                 <table class="table hover-table">
-                                   <tr>
-								      <td><strong>WWN</strong>&nbsp;:&nbsp;</td>
-									  <td>{{selectedDiskData.wwn}}</td>
+								 <thead>
+								   <tr>
+								    <th>
+										Sr.No.
+									</th>
+									<th>
+										Product Name
+									</th>
+									<th>
+										Quantity
+									</th>
 								   </tr>
-								    <tr>
-                                      <td><strong>Firmware-Version</strong>&nbsp;:&nbsp;</td>
-                                      <td>{{selectedDiskData.firware_version}}</td> 
-                                    </tr>
-                                    <tr>
-                                      <td><strong>UUID</strong>&nbsp;:&nbsp;</td>
-                                      <td>{{selectedDiskData.uuid}}</td>	 
-                                    </tr>	
-                                </table>
-                              </div>
-                            </div >		
-                     </div>
-                     <div ng-show="showVolumeData">
-                        <div class="bs-example">	
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a><span class="ui-captilize"><strong>{{selectedVolumeDevice}}</strong></span>&nbsp;:&nbsp;{{selectedVolumeData.id}}</a></li>
-                            </ul>		
-                        </div>
-                         <div class="tab-content">
-                            <div class="tab-pane fade in active table-height-240x">
-                                 <table class="table hover-table">
-                                   <tr>
-                                      <td><strong>Serial</strong>&nbsp;:&nbsp;</td>
-                                      <td>{{selectedVolumeData.serial}}</td>
+								</thead>
+								<tbody ng-show="selectedPOData.length">
+                                   <tr ng-repeat="spd in selectedPOData">
+								      <td></td>
+                                      <td>{{spd.productName}}</td>
+                                      <td>{{spd.qty}}</td>
                                    </tr>
+								</tbody>
+								<tbody ng-show="!selectedPOData.length">
                                    <tr>
-                                      <td><strong>Model</strong>&nbsp;:&nbsp;</td>
-                                      <td>{{selectedVolumeData.model}}</td>
+								      <td colspan="3" style="text-align:center">No Data Found</td>
                                    </tr>
-                                   <tr>
-                                    <td><strong>WWN</strong>&nbsp;:&nbsp;</td>
-                                    <td>{{selectedVolumeData.wwn}}</td> 
-                                   </tr>
-                                   <tr>
-                                      <td><strong>Max IOPS</strong>&nbsp;:&nbsp;</td>
-                                      <td>{{selectedVolumeData.maxIOPS}}</td>
-                                   </tr>
-                                   <tr>
-                                    <td><strong>Brust IOPS</strong>&nbsp;:&nbsp;</td>
-                                    <td>{{selectedVolumeData.burstIOPS}}</td> 
-                                   </tr>
+								</tbody>
                                 </table>
                               </div>
                             </div >		
                      </div>         
-                     <div ng-show="showHostData">
-                        <div class="bs-example">	
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a><span class="ui-captilize"><strong>{{selectedHostDevice}}</strong></span>&nbsp;:&nbsp;{{selectedHostData.id}}</a></li>
-                            </ul>		
-                        </div>
-                         <div class="tab-content">
-                            <div class="tab-pane fade in active table-height-240x">
-                                 <table class="table hover-table">
-                                   <tr>
-                                    <td><strong>UUID</strong>&nbsp;:&nbsp;</td>
-                                    <td>{{selectedHostData.uuid}}</td> 
-                                   </tr>
-                                </table>
-                              </div>
-                            </div >		
+                        
+                         	
                      </div>           
 				</div>
-			</div>
+					</div>
 		</div>
 	</div>
         <div ng-show="!showIconData" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
