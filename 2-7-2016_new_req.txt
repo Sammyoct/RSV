@@ -1,0 +1,27 @@
+- gate pass
+	- vehicle no.
+	- packing material quality check box for each box
+	- Invoice(security check proper invoice no triplicate copy)
+		- invoice no
+		- quality date
+		- po no
+	
+	- triplicate copy
+		- 3 copies of invoice	
+			1) Original for buyer
+			2) Duplicate for transpoter
+			3) Triplicate for seller
+	- Create copy to generate 
+		copy details
+			- name of transpoter
+			- vehicle no
+			- description of material (short)
+			
+	- Once all above checks done the vehicle is eligible for move to inventory/logistic department
+	
+
+- Inventory/logistic department (vehicle reaches at unloading point)
+	- Store keeper checks the material against the po no with check box and text box and verify details 
+	- if in case the purchase order is larger amount or some of the quantity reaches step by step then 
+			- gate pass has copy of invoice accordingly
+			- and store keeper examines the quantity of material and rate against the po
