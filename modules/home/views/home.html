@@ -77,34 +77,46 @@ if (e.style.display == 'block' || e.style.display=='')
 				</li>
 			  </ul>  
 			</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-show="showIconData">
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-show="showIconData == 1">
 				<h1 class="page-header">Security Gate Pass</h1>
 				<div class="col-md-12">	
 						<div id="controller" class="tab-pane fade in active" style="text-align:justify">
-                            <div class="">
+							<div class="">
 								<div>
-								 <label>Purchase order no</label>
+								 <label>Vehicle no</label>
+								 <input type="text" name="vehicleno" ng-model="vehicleno">
+								</div>
+								<div>
+								 <label>Purchase order no</lbel>
 								 <input type="text" name="pono" ng-model="pono">
+								</div>
+								<div>
+								 <label>Invoice no</label>
+								 <input type="text" name="invoiceno" ng-model="invoiceno">
+								</div>
+								<div>
+								 <label>Invoice Quantity</label>
+								 <input type="text" name="quantity" ng-model="quantity">
 								</div>
 								<div>
 									<input type="button" ng-click="searchPO()" value="Search">
 								</div>
-                            </div>
-                        </div>
+							</div>
+						</div>
 					<br>
-                    <br>
-                    <div ng-show="showPOData">
-                        <div class="bs-example">	
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a><span><strong>PO NO. : {{displayValue}}</strong></span></a></li>
-                            </ul>		
-                        </div>
-                         <div class="tab-content">
-                            <div class="tab-pane fade in active table-height-240x">
-                                 <table class="table hover-table">
+					<br>
+					<div ng-show="showPOData">
+						<div class="bs-example">	
+							<ul class="nav nav-tabs">
+								<li class="active"><a><span><strong>PO NO. : {{displayValue}}</strong></span></a></li>
+							</ul>		
+						</div>
+						 <div class="tab-content">
+							<div class="tab-pane fade in active table-height-240x">
+								 <table class="table hover-table">
 								 <thead>
 								   <tr>
-								    <th>
+									<th>
 										Sr.No.
 									</th>
 									<th>
@@ -113,34 +125,92 @@ if (e.style.display == 'block' || e.style.display=='')
 									<th>
 										Quantity
 									</th>
+									<th>
+										Quantity Checks
+									</th>
 								   </tr>
 								</thead>
 								<tbody ng-show="selectedPOData.length">
-                                   <tr ng-repeat="spd in selectedPOData">
-								      <td></td>
-                                      <td>{{spd.productName}}</td>
-                                      <td>{{spd.qty}}</td>
-                                   </tr>
+								   <tr ng-repeat="spd in selectedPOData">
+									  <td></td>
+									  <td>{{spd.productName}}</td>
+									  <td>{{spd.qty}}</td>
+									  <td><input type="checkbox"></td>
+								   </tr>
 								</tbody>
 								<tbody ng-show="!selectedPOData.length">
-                                   <tr>
-								      <td colspan="3" style="text-align:center">No Data Found</td>
-                                   </tr>
+								   <tr>
+									  <td colspan="3" style="text-align:center">No Data Found</td>
+								   </tr>
 								</tbody>
-                                </table>
-                              </div>
-                            </div >		
-                     </div>         
-                        
-                         	
-                     </div>           
+								</table>
+								
+							  </div>
+							  <div>
+								 <label>Triplicate Copy</label>
+								 <div>
+									<input type="radio" value="yes" ng-model="quantity">Yes
+									<input type="radio" value="no" ng-model="quantity">No
+								 </div>
+								 <!-- if triplicate copy yes -->
+								 <div>
+									<label>Original for buyer</label>
+									<input type="checkbox" ng-model="">
+								 </div>
+								 <div>
+									<label>Duplicate for transpoter</label>
+									<input type="checkbox" ng-model="">
+								 </div>
+								 <div>
+									<label>Triplicate for seller</label>
+									<input type="checkbox" ng-model="">
+								 </div>
+								 <div>
+									<label>Safty measures</label>
+									<input type="radio" value="yes" ng-model="quantity">Yes
+									<input type="radio" value="no" ng-model="quantity">No
+								 </div>
+								 <div style="text-align:center;">
+									<!-- //todo: generate gatepass with following details 
+												- name of transpoter
+												- vehicle no
+												- description of material (short)
+									-->
+									<input type="button" name="submit" value="Print Gate Pass" ng-click="generateGatePass()">
+								 </div>
+								</div>
+							</div >		
+							<h1>test</h1>
+							First name:<br>
+  <input type="text" name="firstname"><br>
+  Last name:<br>
+  <input type="text" name="lastname">
+					 </div>         
+						
+							
+					 </div>           
 				</div>
 					</div>
 		</div>
-	</div>
-        <div ng-show="!showIconData" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		</div>
+        <div ng-show="showIconData == 2" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="wrapper col-md-12">
 				<img class="img-responsive" src="http://localhost/rsv/modules/home/images/under-construction.jpg">
 			</div>
-		</div>	
+		</div>
+		<div ng-show="showIconData == 3" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div class="wrapper col-md-12">
+				<img class="img-responsive" src="http://localhost/rsv/modules/home/images/under-construction.jpg">
+			</div>
+		</div>
+		<div ng-show="showIconData == 4" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div class="wrapper col-md-12">
+				<img class="img-responsive" src="http://localhost/rsv/modules/home/images/under-construction.jpg">
+			</div>
+		</div>
+		<div ng-show="showIconData == 5" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div class="wrapper col-md-12">
+				<img class="img-responsive" src="http://localhost/rsv/modules/home/images/under-construction.jpg">
+			</div>
+		</div>
 	</div>

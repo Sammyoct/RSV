@@ -44,14 +44,10 @@ app.controller('HomeController',['$scope',function ($scope) {
     };
     
     $scope.tabData = function(str){
-      	  if(str == '2'){
-    		$scope.showIconData = true; 
-    	  }else{
-    	   $scope.showIconData = false; 	  
-    	  }  
+      	  $scope.showIconData = str; 
 	  }
     
     
-    $scope.showIconData = true; 
+    $scope.showIconData = 1; 
  
 }]);
