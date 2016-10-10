@@ -43,6 +43,9 @@ if (e.style.display == 'block' || e.style.display=='')
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+			<li>
+				<h1 style="color:white;">{{theTime}}</h1>
+			</li>
 			<li>	
 			<i class="fa fa-user ui-left ui-user-icon" ></i>
 			<a href="#/login" class="ui-left">Log Out</a>
@@ -74,6 +77,9 @@ if (e.style.display == 'block' || e.style.display=='')
 				</li>
 				<li>
 			   <center> <i ng-click="tabData(5)" class="fa fa-3x fa fa-user-plus navside img-responsive "></i> </center>
+				</li>
+				<li>
+			   <center> <i ng-click="tabData(6)"  class="fa fa-3x fa-save navside img-responsive "></i> </center>
 				</li>
 			  </ul>  
 			</div>
@@ -135,7 +141,7 @@ if (e.style.display == 'block' || e.style.display=='')
 									  <td></td>
 									  <td>{{spd.productName}}</td>
 									  <td>{{spd.qty}}</td>
-									  <td><input type="checkbox"></td>
+									  <td><input type="checkbox" ng-model="qtyChk"></td>
 								   </tr>
 								</tbody>
 								<tbody ng-show="!selectedPOData.length">
@@ -155,15 +161,15 @@ if (e.style.display == 'block' || e.style.display=='')
 								 <!-- if triplicate copy yes -->
 								 <div>
 									<label>Original for buyer</label>
-									<input type="checkbox" ng-model="">
+									<input type="checkbox" ng-model="originalBuyerYes">
 								 </div>
 								 <div>
 									<label>Duplicate for transpoter</label>
-									<input type="checkbox" ng-model="">
+									<input type="checkbox" ng-model="transportYes">
 								 </div>
 								 <div>
 									<label>Triplicate for seller</label>
-									<input type="checkbox" ng-model="">
+									<input type="checkbox" ng-model="sellerYes">
 								 </div>
 								 <div>
 									<label>Safty measures</label>
@@ -190,12 +196,125 @@ if (e.style.display == 'block' || e.style.display=='')
 							
 					 </div>           
 				</div>
-					</div>
-		</div>
-		</div>
+		<div ng-show="showIconData == 6" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div class="wrapper col-md-12">
+				<h1 class="page-header">Inventory/Store Department</h1>
+				<h2>Show Added material for previous qty wise</h2>
+			</div>
+		</div>	
         <div ng-show="showIconData == 2" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="wrapper col-md-12">
-				<img class="img-responsive" src="http://localhost/rsv/modules/home/images/under-construction.jpg">
+				<h1 class="page-header">Logistics Department</h1>
+				<div id="controller" class="tab-pane fade in active" style="text-align:justify">
+							<div class="" ng-show="!showTable">
+								<div>
+								 <label>PO No</label>
+								 <input type="text" name="store_poNo" ng-model="store_poNo">
+								</div>
+								<div>
+									<input type="button" ng-click="searchPOStore()" value="Search">
+								</div>
+							</div>
+							<div id="materialQuantity" ng-show="showTable">
+								<div class="table-responsive" ng-show="!showCheckList">
+									<table class="table">
+										<tr>
+											<th>
+												Sr No
+											</th>
+											<th>
+												Matrial Name
+											</th>
+											<th>
+												Matrial Rate
+											</th>
+											<th>
+												Material Note
+											</th>
+											<th>
+												Checked
+											</th>
+										</tr>
+										<tr ng-repeat="storepro in productData track by $index">
+											<td>
+												{{$index+1}}
+											</td>
+											<td>
+												{{storepro.product_name}}
+											</td>
+											<td>
+												Rs.{{storepro.product_rate}}/-
+											</td>
+											<td>
+												<input type="text" ng-model="storepro.product_note">
+											</td>
+											<td>
+												<input type="checkbox" ng-model="storepro.product_check">
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div>
+									<input type="button" ng-click="generateGRN()" value="Generate GRN">
+								</div>
+							
+							<div id="GRNReceipt" ng-show="showCheckList">
+								<div>
+									<div class="">
+										<div>
+										 <label>GRN</label>
+										 <label>001</label>
+										</div>
+										<div>
+										 <label>PO NO.</label>
+										 <label>1</label>
+										</div>
+										<div>
+											Materials
+										</div>
+										<div class="table-responsive">
+											<table class="table">
+												<tr>
+													<th>
+														Sr No
+													</th>
+													<th>
+														Matrial Name
+													</th>
+													<th>
+														Matrial Rate
+													</th>
+													<th>
+														Material Note
+													</th>
+												</tr>
+												<tr ng-repeat="storepro in productData track by $index">
+													<td>
+														{{$index+1}}
+													</td>
+													<td>
+														{{storepro.product_name}}
+													</td>
+													<td>
+														Rs.{{storepro.product_rate}}/-
+													</td>
+													<td>
+														{{storepro.product_note}}
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									<div>
+										<input type="button" ng-click="send()" value="Send Mail">
+										<input type="button" ng-click="print()" value="Print">
+									</div>
+								</div>
+							</div>
+							</div>
+						</div>
+				<table>
+				</table>
 			</div>
 		</div>
 		<div ng-show="showIconData == 3" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
