@@ -87,4 +87,27 @@ $scope.theTime = new Date().toLocaleTimeString();
 							 ];	
 		$scope.showCheckList = 1;
 	}
+	$scope.completed_per = _.range(10, 110, 10);
+	
+	console.log($scope.completed_per);
+	
+	$scope.showProductionTable = 0;
+	
+	$scope.searchLotNoProduction = function(){
+		$scope.lotData = [{"id":"1","product_name":"pro1","product_note":"--","product_qty":"0","completed_percentage":"10"},
+							  {"id":"2","product_name":"material2","product_note":"--","product_qty":"10","completed_percentage":"30"},
+							  {"id":"3","product_name":"material3","product_note":"--","product_qty":"50","completed_percentage":"100"},
+							  {"id":"4","product_name":"material4","product_note":"--","product_qty":"70","completed_percentage":"100"},
+							  {"id":"5","product_name":"material5","product_note":"--","product_qty":"80","completed_percentage":"30"},
+							  {"id":"6","product_name":"material6","product_note":"--","product_qty":"90","completed_percentage":"40"},
+							  {"id":"7","product_name":"material7","product_note":"--","product_qty":"50","completed_percentage":"60"},
+							  {"id":"8","product_name":"material8","product_note":"--","product_qty":"40","completed_percentage":"50"},
+							  {"id":"9","product_name":"material9","product_note":"--","product_qty":"30","completed_percentage":"60"},
+							  {"id":"10","product_name":"material10","product_note":"--","product_qty":"70","completed_percentage":"50"},
+							  {"id":"11","product_name":"material11","product_note":"--","product_qty":"80","completed_percentage":"10"},
+							  {"id":"12","product_name":"material12","product_note":"--","product_qty":"90","completed_percentage":"100"}
+							 ];	
+		$scope.showProductionTable = 1;
+	}
+	
 }]);
